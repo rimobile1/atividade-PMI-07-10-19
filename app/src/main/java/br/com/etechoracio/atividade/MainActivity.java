@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements CustomDialog.ItemListener{
 
@@ -36,12 +37,6 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,5 +45,22 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
 
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action:
+               CustomDialog dialog = new CustomDialog(this);
+               dialog.show(getFragmentManager(),"dialog");
+               insertMode = true;
+                return  true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+
+        }
+
+
     }
 }
