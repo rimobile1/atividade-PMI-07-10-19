@@ -75,13 +75,26 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
 
         PopupMenu popup = new PopupMenu(this,view);
         popup.inflate(R.menu.menu1);
+        popup.setOnMenuItemClickListener(this);
         popup.show();
+      //selectedItem = position;
 
-        return false;
+
+        return true;
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
-        return false;
+        switch (menuItem.getItemId()){
+            case R.id.action_excluir:
+                adapter.removeItem(selectedItem);
+                return  true;
+
+        }
+
+
+
+
+        return true;
     }
 }
