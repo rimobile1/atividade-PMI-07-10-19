@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
         popup.inflate(R.menu.menu1);
         popup.setOnMenuItemClickListener(this);
         popup.show();
-      //selectedItem = position;
+
 
 
         return true;
@@ -90,11 +90,19 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
                 adapter.removeItem(selectedItem);
                 return  true;
 
+            case R.id.action_editar:
+                CustomDialog editar = new CustomDialog(this);
+                editar.show(getFragmentManager(), "editar");
+                insertMode = false;
+                return  true;
+
+                default:
+                    return super.onOptionsItemSelected(menuItem);
         }
 
 
 
 
-        return true;
+
     }
 }
